@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { APIContextProvider } from "./apiContext";
+import Pokemons from "./components/Pokemons";
+import "./scss/index.scss";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <APIContextProvider>
+      <div className="App">
+        <div className="App-header">
+          <img
+            src={process.env.PUBLIC_URL + 'pokemon_logo.png'}
+            className="App-header-logo"
+            alt="logo"
+          />
+          <h2>Pokédex</h2>
+        </div>
+        <Pokemons />
+      </div>
+    </APIContextProvider>
   );
 }
-
-export default App;
